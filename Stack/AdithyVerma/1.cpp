@@ -1,4 +1,4 @@
-// Given an array of integers, the task is to find the next greater element for each element of the array in order of their appearance in the array
+// Given an array of integers, the task is to find the next greater element in the right side of array for each element of the array in order of their appearance in the array
 
 /*
     -   Next greater element of an element in the array is the nearest element on the right which is greater than the current element.
@@ -9,7 +9,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void printNextGreatestEleBF(int n, int*arr){
+void bruteForce(int n, int*arr){
 	int i, j;
 	for(i=0; i<n; i++){
 		if(i == n-1){
@@ -27,7 +27,7 @@ void printNextGreatestEleBF(int n, int*arr){
 	return;
 }
 
-vector<int> printNextGreatestEleOP(int n, int*arr){
+vector<int> optimisedApp(int n, int*arr){
 	stack<int>st;
 	vector<int>res(n);
 	for(int i=n-1; i>=0; i--){
@@ -55,8 +55,8 @@ int main()
 	for(int i=0; i<n; i++){
 		cin>>arr[i];
 	}
-	printNextGreatestEleBF(n, arr);    // BruteForce solution
-    vector<int>res = printNextGreatestEleOP(n, arr);        // OPtimised solution
+	bruteForce(n, arr);    // BruteForce solution
+    vector<int>res = optimisedApp(n, arr);        // OPtimised solution
 	for(auto it:res){
 		cout<<it<<" ";
 	}
