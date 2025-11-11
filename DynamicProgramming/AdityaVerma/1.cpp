@@ -36,6 +36,20 @@ int usingMemoization(vector<int> & weights, vector<int>  & value, int n, int W, 
     return dp[n][W];
 }
 
+int usingDP(vector<int> &weights, vector<int> &values, int n, int W, vector<vector<int>> &dp){
+    for(int i=1; i<=n; i++){
+        for(int j=1; j<=W; j++){
+            if(j >= weights[i-1]){
+                dp[i][j] = max(values[i-1] + dp[i-1][j-weights[i-1]], dp[i-1][j]);
+            }else{
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+
+    return dp[n][W];
+}
+
 int main(){
 
     int n, W;
@@ -60,6 +74,8 @@ int main(){
         vector<vector<int>> dp(n+1, vector<int>(W+1, -1));
         cout<<"Solution using Recursion : "<<usingRecursion(weights, value, n, W)<<endl;
         cout<<"Solution using Memoization : "<<usingMemoization(weights, value, n-1, W, dp)<<endl;
+        dp = vector<vector<int>>(n+1, vector<int>(W+1, 0));
+        cout<<"Solution using iterative DP : "<<usingDP(weights, value, n, W, dp)<<endl;
     }    
     return 0;
 }
