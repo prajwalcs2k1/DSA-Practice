@@ -45,6 +45,10 @@ int main(){
     int K;
     cout<<"Enter the K size: ";
     cin>>K;
+    if((K==0) || (K > n)){
+        cout<<"Invalid K value!!";
+        return 0;
+    }
     cout<<"Maximum sum subarray of size "<<K<<" is: "<<bruteForce(n, arr, K)<<endl;
     cout<<"Maximum sum subarray of size "<<K<<" is: "<<slidingWindow(n, arr, K)<<endl;
     return 0;

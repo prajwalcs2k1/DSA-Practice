@@ -26,11 +26,10 @@ void slidingWindow(int n, vector<int>&arr, int K){
     while(end < n){
         if(arr[end] < 0) dq.push_back(end);
         if((end - st + 1) == K){
-            if(!dq.empty()){
-                cout<<arr[dq.front()]<<" ";
-            }else cout<<0<<" ";
+            while(!dq.empty() && (dq.front() < st)) dq.pop_front();
+            if(!dq.empty()) cout<<arr[dq.front()]<<" ";
+            else cout<<0<<" ";
             st++;
-            while(!dq.empty() && dq.front() < st) dq.pop_front();
         }
         end++;
     }
