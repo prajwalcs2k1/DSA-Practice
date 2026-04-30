@@ -12,10 +12,9 @@ int bruteForce(int k, vector<int> &arr){
     if(arr.size() == 1) return arr[0];
     int n = arr.size();
     int pos = 0;
-    while(arr.size() != 1){
+    while(n != 1){
         pos = (pos + k-1) % n;
-        int eleToRemove = arr[pos];
-        arr.erase(find(arr.begin(), arr.end() , eleToRemove));
+        arr.erase(arr.begin() + pos);
         n = arr.size();
     }
     return arr[0];
